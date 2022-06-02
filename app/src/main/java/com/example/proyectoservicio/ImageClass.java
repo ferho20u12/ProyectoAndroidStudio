@@ -44,13 +44,13 @@ public class ImageClass extends AppCompatActivity {
         mats = new ArrayList<>();
         cont=0;
         identificadores = new ArrayList<>();
-        if(OpenCVLoader.initDebug())
-            Toast.makeText(this,"Cargado OpenCv",Toast.LENGTH_SHORT).show();
-        else
+        if(!OpenCVLoader.initDebug())
             Toast.makeText(this,"Algo salio mal al cargar Open CV",Toast.LENGTH_SHORT).show();
-        Obtencion_Imagenes();
-        CargarSlider();
-        IdentificarNumeros();
+        else{
+            Obtencion_Imagenes();
+            CargarSlider();
+            IdentificarNumeros();
+        }
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ImageClass extends AppCompatActivity {
         if(parametros !=null){
             mats.add(new Mat(parametros.getLong("image_outputCrop")));
             int contCirculos = parametros.getInt("contCirculos");
-            for(int i = 0; i< contCirculos; i++){
+            for(int i = contCirculos-1; i>=0; i--){
                 mats.add(new Mat(parametros.getLong("image_output"+i)));
             }
             if(mats.get(0) != null){
@@ -101,9 +101,12 @@ public class ImageClass extends AppCompatActivity {
             else{
                 classifyImage(bitmaps.get(i));
             }
-
         }
-        String str = textView.getText()+" Kw";
+        String str = "";
+        for(int i = identificadores.size()-1;i>=0;i--){
+            str+=identificadores.get(i);
+        }
+        str += " Kw";
         textView.setText(str);
     }
     private void classifyImage(Bitmap image)
@@ -148,8 +151,6 @@ public class ImageClass extends AppCompatActivity {
                 }
             }
             identificadores.add(classes.get(maxPos));
-            String str = textView.getText()+classes.get(maxPos);
-            textView.setText(str);
             model.close();
         } catch (IOException e) {
             Toast.makeText(this, "No jala", Toast.LENGTH_SHORT).show();
@@ -197,8 +198,6 @@ public class ImageClass extends AppCompatActivity {
                 }
             }
             identificadores.add(classes.get(maxPos));
-            String str = textView.getText()+classes.get(maxPos);
-            textView.setText(str);
             model.close();
         } catch (IOException e) {
             Toast.makeText(this, "No jala", Toast.LENGTH_SHORT).show();

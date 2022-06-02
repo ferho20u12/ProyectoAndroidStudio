@@ -12,7 +12,7 @@
         android:layout_height="fill_parent"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
+    <Button
         android:id="@+id/btnCapturar"
         android:layout_width="90dp"
         android:layout_height="84dp"
@@ -23,6 +23,6 @@
         android:clickable="true"
         android:onClick="CallWindowImageDetection"
         android:text="Capturar"
-        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:background="@drawable/camera_shutter"
         tools:ignore="ContentDescription,HardcodedText,KeyboardInaccessibleWidget,UsingOnClickInXml,SpeakableTextPresentCheck,SpeakableTextPresentCheck,ImageContrastCheck,ImageContrastCheck" />
 </RelativeLayout>

@@ -92,12 +92,8 @@ public class CamaraOpenCV extends AppCompatActivity implements CameraBridgeViewB
     @Override
     protected void onResume() {
         super.onResume();
-        if(!OpenCVLoader.initDebug()){
-            Toast.makeText(this,"",Toast.LENGTH_LONG).show();
-        }
-        else{
+        if(OpenCVLoader.initDebug()){
             baseLoaderCallback.onManagerConnected(baseLoaderCallback.SUCCESS);
-
         }
     }
 
@@ -160,12 +156,12 @@ public class CamaraOpenCV extends AppCompatActivity implements CameraBridgeViewB
     }
     private void BurbujaMejorada(){
         Circulo AUX;
-        int N = circulos.size(), paso, j;
+        int j;
         int bandera=1;
-        for(paso=0;paso<N-1&&bandera==1;paso++)
+        for(int i = 0;i<(circulos.size()-1)&&bandera==1;i++)
         {
             bandera=0;
-            for(j=0;j<N-paso-1;j++)
+            for(j=0;j<circulos.size()-i-1;j++)
             {
                 if(circulos.get(j).getCenter().x>circulos.get(j+1).getCenter().x)
                 {

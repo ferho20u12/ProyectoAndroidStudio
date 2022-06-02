@@ -5,28 +5,36 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".MainActivity"
-
     >
-
     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
         android:id="@+id/carousel"
         android:layout_width="fill_parent"
-        android:layout_height="186dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="252dp" />
+        android:layout_height="300dp"
+        android:layout_centerVertical="true" />
 
-    <ImageView
+    <Button
         android:id="@+id/button"
-        android:layout_width="136dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/camera"
         android:clickable="true"
         android:onClick="CallWindowCamara"
-        app:icon="?attr/homeAsUpIndicator"
-        app:srcCompat="?attr/homeAsUpIndicator"
         tools:ignore="ContentDescription,KeyboardInaccessibleWidget,UsingOnClickInXml,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Selecciona un modelo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#2CFF0000" />
+
 </RelativeLayout>
