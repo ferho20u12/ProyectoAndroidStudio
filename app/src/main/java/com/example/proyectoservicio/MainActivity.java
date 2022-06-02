@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
@@ -27,9 +28,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void CallWindowCamara(View view) {
         Intent intent = new Intent(this, CamaraOpenCV.class);
+        intent.putExtra("contCirculos", carousel.getId());
+        //Toast.makeText(this,""+carousel.,Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
     private void CargarSlider(){
+        //------------------------0
         list.add(
                 new CarouselItem(
                         R.drawable.medidorwestinghouse,
